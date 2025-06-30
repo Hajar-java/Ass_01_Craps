@@ -1,14 +1,16 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class CrapsGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Random rnd = new Random();
         boolean playAgain = true;
 
         while (playAgain) {
-            // FORCE Case iii: first roll is 6
-            int die1 = 3;
-            int die2 = 3;
+            // First roll - random dice
+            int die1 = rnd.nextInt(6) + 1;
+            int die2 = rnd.nextInt(6) + 1;
             int sum = die1 + die2;
 
             System.out.println("First Roll: " + die1 + " + " + die2 + " = " + sum);
@@ -23,9 +25,8 @@ public class CrapsGame {
 
                 boolean rolling = true;
                 while (rolling) {
-                    // FORCE second roll to 5 (not 6 or 7)
-                    die1 = 2;
-                    die2 = 3;
+                    die1 = rnd.nextInt(6) + 1;
+                    die2 = rnd.nextInt(6) + 1;
                     sum = die1 + die2;
 
                     System.out.println("Rolling for point: " + die1 + " + " + die2 + " = " + sum);
@@ -38,7 +39,6 @@ public class CrapsGame {
                         rolling = false;
                     } else {
                         System.out.println("Trying for point...");
-                        rolling = false; // stop here to just show 1 "Trying for point"
                     }
                 }
             }
